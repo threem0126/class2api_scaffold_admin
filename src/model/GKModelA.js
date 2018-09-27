@@ -6,6 +6,9 @@ import * as types from './../constants'
 
 @modelSetting({
     __Auth:async ({req})=>{
+        //为了加速调试，可临时模拟指定UID
+        // return {uID:921303}
+
         //非后台的用户验证，解析header中的token信息
         return await Auth.parseUserInfoFromRequest({req})
     }

@@ -25,6 +25,7 @@ const beforeCall = async ({req, params, modelSetting})=> {
     //根据类的__Auth配置来进行身份验证,具体的验证逻辑由类的修饰器配置决定，这里不进行类静态方法的权限认证
     if (__Auth) {
         let userInfo = await __Auth({req})
+        //将req中解析出来的uID，注入到API请求参数中，在后面执行API方法时，在方法内可接收到并处理身份
         params.uID = userInfo.uID
     }
     return params
