@@ -40,7 +40,8 @@ const afterCall = async ({req,result})=> {
     return result
 }
 
-//创建微服务对象
+
+//创建微服务对象，参考文档：https://github.com/threem0126/class2api
 createServer({
     modelClasses:[GKModelA, {model:GKModelA, as:'a2'}, GKRuleManager, {model:GKAdmin_ModelA,as:"admin"}],
     beforeCall,
@@ -48,7 +49,7 @@ createServer({
     config:{
         redis,
         cros:true,
-        cros_origin:['http://web.domain.com'],
+        cros_origin:['*'],
         cros_headers:[]
     },
 }).then((server)=>{
